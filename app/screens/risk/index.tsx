@@ -17,6 +17,8 @@ const RiskScreen = () => {
     dispatch(getRiskAllData())
   }, [dispatch])
 
+  
+
   const {riskalldata, riskallerror, riskallloading}: GeneticsSliceTypes =
     useAppSelector<RootState>((state) => state.genetics)
   

@@ -4,12 +4,24 @@ import { riskDataType } from "app/store/types";
 import { scale } from "app/lib/scale";
 import Typography from "app/globalcomponents/typography";
 import { riskindicators } from "app/constants/risk";
+import { useEffect } from "react";
+import StackedBarChartComponent from "app/globalcomponents/barstackedchart";
 
 const RiskData: ListRenderItem<riskDataType> = (info) => {
   const {item, index} = info;
+
   return (
     <View style={styles.container} key={`riskname-${index}`}>
       <Typography style={styles.label}>{item?.hazardName}</Typography>
+      <StackedBarChartComponent 
+        data={[item?.deficient, item?.risk, item?.wildType, item?.improved, item?.optimal]}
+        colorrange={['#EF9611', '#FFF4E4', '#D2D2D2', '#EBFBE2', '#81B578']}
+        width={scale(200)}
+        height={scale(8)}
+        styles={{
+          borderRadius: scale(2)
+        }}
+      />
     </View>
   )
 }

@@ -28,7 +28,6 @@
     "react-redux": "^8.0.4",
     "redux": "^4.2.0",
     "redux-saga": "^1.2.1",
-    "victory-native": "^36.6.8",
     "yarn": "^1.22.19"
   },
   "devDependencies": {
