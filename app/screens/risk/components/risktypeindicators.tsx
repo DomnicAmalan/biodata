@@ -22,7 +22,9 @@ const styles = StyleSheet.create({
   container: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
+    marginLeft: scale(16),
+    marginRight: scale(16),
   },
   risktypelabelscontainer: {
     display: 'flex',

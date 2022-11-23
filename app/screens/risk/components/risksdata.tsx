@@ -3,25 +3,26 @@ import { StyleSheet } from "react-native";
 import { riskDataType } from "app/store/types";
 import { scale } from "app/lib/scale";
 import Typography from "app/globalcomponents/typography";
-import { riskindicators } from "app/constants/risk";
-import { useEffect } from "react";
 import StackedBarChartComponent from "app/globalcomponents/barstackedchart";
+import Expand from '../../../../assets/svg/expand.svg';
 
 const RiskData: ListRenderItem<riskDataType> = (info) => {
   const {item, index} = info;
-
   return (
-    <View style={styles.container} key={`riskname-${index}`}>
-      <Typography style={styles.label}>{item?.hazardName}</Typography>
-      <StackedBarChartComponent 
-        data={[item?.deficient, item?.risk, item?.wildType, item?.improved, item?.optimal]}
-        colorrange={['#EF9611', '#FFF4E4', '#D2D2D2', '#EBFBE2', '#81B578']}
-        width={scale(200)}
-        height={scale(8)}
-        styles={{
-          borderRadius: scale(2)
-        }}
-      />
+    <View style={{display: 'flex', flexDirection: 'row'}}>
+      <View style={styles.container} key={`riskname-${index}`}>
+        <Typography style={styles.label}>{item?.hazardName}</Typography>
+        <StackedBarChartComponent 
+          index={index}
+          data={[item?.deficient, item?.risk, item?.wildType, item?.improved, item?.optimal]}
+          colorrange={['#EF9611', '#FFF4E4', '#D2D2D2', '#EBFBE2', '#81B578']}
+          width={scale(250)}
+          height={scale(8)}
+          styles={styles.chartcontainer}
+          barRadius={2}
+        />
+      </View>
+      <Expand />
     </View>
   )
 }
@@ -44,15 +45,8 @@ const styles = StyleSheet.create({
     color: '#15284E'
   },
   chartcontainer: {
+    marginTop: scale(8),
     height: scale(8),
-    width: scale(100),
-    marginTop: scale(20),
-    zIndex: 100,
-    
-  },
-  chartvaluecontainer: {
-    height: scale(8),
-    borderRadius: scale(2),
   }
 })
 
