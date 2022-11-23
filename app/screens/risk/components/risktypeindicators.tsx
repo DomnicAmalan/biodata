@@ -6,12 +6,12 @@ import { riskindicators } from "app/constants/risk";
 const RiskTypeIndicators = () => {
   return (
     <View style={styles.container}>
-      {riskindicators.map((item, idx) => (
+      {Object.keys(riskindicators).map((item, idx) => (
         <View 
           key={`risktypelabels-${idx}`} 
-          style={{...styles.risktypelabelscontainer, backgroundColor: item?.color}}
+          style={{...styles.risktypelabelscontainer, backgroundColor: riskindicators[item].color}}
         >
-         <Text style={styles.risktypelabel}>{item.label}</Text>
+         <Text style={styles.risktypelabel}>{riskindicators[item].label}</Text>
         </View>
       ))}
     </View>

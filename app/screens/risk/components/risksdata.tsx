@@ -1,38 +1,16 @@
-import { Text, View, ListRenderItem, ListRenderItemInfo } from "react-native"
+import { View, ListRenderItem, Platform } from "react-native"
 import { StyleSheet } from "react-native";
 import { riskDataType } from "app/store/types";
-import { scale, windowWidth } from "app/lib/scale";
+import { scale } from "app/lib/scale";
 import Typography from "app/globalcomponents/typography";
-import { VictoryBar, VictoryContainer, VictoryLabel, VictoryStack } from "victory-native";
+import { riskindicators } from "app/constants/risk";
 
 const RiskData: ListRenderItem<riskDataType> = (info) => {
-  // console.log(info)
+  const {item, index} = info;
   return (
-    <>
-    <View style={styles.container} key={`riskname-${info?.index}`}>
-      <Typography style={styles.label}>{info?.item?.hazardName}</Typography>
-      <VictoryStack
-        style={{
-          data: {
-            stroke: "rgba(255,255,255,1)",
-            strokeWidth: 2
-          },
-          parent: {
-            backgroundColor: 'green',
-            padding: 0,
-            height: 8,
-            width: windowWidth
-          }
-        }}
-        colorScale={["#D0021B", "#F5A623", "#00C16F"]}
-        containerComponent={<VictoryContainer preserveAspectRatio="none" portalZIndex={100} style={styles.chartcontainer}/>}
-      >
-        <VictoryBar barWidth={8} horizontal data={[{ x: "progress", y: 50 }]} />
-        <VictoryBar barWidth={8} horizontal data={[{ x: "progress", y: 25 }]} />
-        <VictoryBar barWidth={8} horizontal data={[{ x: "progress", y: 25 }]} />
-      </VictoryStack>
+    <View style={styles.container} key={`riskname-${index}`}>
+      <Typography style={styles.label}>{item?.hazardName}</Typography>
     </View>
-  </>
   )
 }
 
@@ -46,9 +24,6 @@ const styles = StyleSheet.create({
     marginBottom: scale(8),
     borderRadius: scale(12),
     padding: scale(16),
-    // display: 'flex',
-    // flexDirection: 'column',
-    // position: 'relative'
   },
   label: {
     fontWeight: '600',
@@ -57,10 +32,15 @@ const styles = StyleSheet.create({
     color: '#15284E'
   },
   chartcontainer: {
-    width: scale(windowWidth),
-    // padding: scale(16),
-    // height: scale(8)
-    zIndex: 100
+    height: scale(8),
+    width: scale(100),
+    marginTop: scale(20),
+    zIndex: 100,
+    
+  },
+  chartvaluecontainer: {
+    height: scale(8),
+    borderRadius: scale(2),
   }
 })
 

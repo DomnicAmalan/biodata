@@ -31,6 +31,7 @@ const RiskScreen = () => {
               data={riskalldata}
               extraData={riskalldata}
               renderItem={RiskData}
+              initialNumToRender={1}
             />
           </View>
       }
