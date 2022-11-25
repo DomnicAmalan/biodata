@@ -12,7 +12,6 @@ const RiskBySNP: FC<PropsWithChildren & any> = (props) => {
   const dispatch = useDispatch()
 
   const {risksnp, risksnploading}: GeneticsSliceTypes = useAppSelector<RootState>((state) => state.genetics)
-  console.log(risksnp?.risks)
   useEffect(() => {
     dispatch(getRiskBySNPData(props?.route.params))
   }, [])
