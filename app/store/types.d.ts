@@ -2,10 +2,44 @@ interface GeneticsSliceTypes {
   riskallloading: boolean,
   riskallerror?: any,
   riskalldata: riskDataType[],
-  subhazard?: RiskResponse | any,
+  subhazard?: RiskResponse | null,
   subhazardloading: boolean,
-  subhazarderror?: any
+  subhazarderror?: any,
+  risksnp?: RiskSnp | null,
+  risksnploading: boolean,
+  risksnperror: any
 }
+
+interface RiskSnp {
+  risks:     Risk[];
+  snpMarker: string;
+}
+
+interface Risk {
+  conflictMessageTitle:      string;
+  conflictMessageText:       string;
+  userId:                    number;
+  geneticTestId:             number;
+  laboratoryName:            string;
+  alleleTypeName:            string;
+  alleleTypeId:              number;
+  alleleInTest:              string;
+  snpMarker:                 string;
+  geneName:                  string;
+  aminoAcid:                 string;
+  hazardName:                string;
+  hazardId:                  number;
+  hazardDescription:         string;
+  subHazardName:             string;
+  subHazardId:               number;
+  subHazardDescription:      string;
+  magnitude:                 number;
+  snpInterpretationAlleleId: number;
+  snpInterpretationId:       number;
+  narrative:                 string;
+  isConflict:                boolean;
+}
+
 
 interface riskDataType {
   deficient: number,
@@ -66,3 +100,10 @@ export type GetFnResult<T extends PromiseFn> = GetT<ReturnType<T>>;
 export type RootState = ReturnType<typeof store.getState>
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch
+
+
+export type RootStackParamList = {
+  Home: undefined;
+  SubHazard: undefined;
+  RiskbySNP: undefined;
+};

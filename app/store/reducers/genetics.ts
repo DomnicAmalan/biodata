@@ -9,7 +9,10 @@ const GenticsSlice = createSlice({
     riskalldata: [],
     subhazard: null,
     subhazardloading: false,
-    subhazarderror: null
+    subhazarderror: null,
+    risksnp: null,
+    risksnploading: false,
+    risksnperror: null
   } as GeneticsSliceTypes,
   reducers: {
     getRiskAllData: (state) => {
@@ -30,7 +33,7 @@ const GenticsSlice = createSlice({
     getSubHazardData: (state, action) => {
       state.subhazardloading = true
       state.subhazarderror = null
-      state.subhazard = []
+      state.subhazard = null
     },
     getSubHazardDataSuccess: (state, action) => {
       state.subhazardloading = false
@@ -41,6 +44,21 @@ const GenticsSlice = createSlice({
       state.subhazardloading = false
       state.subhazarderror = action.payload.error
       state.subhazard = action.payload.data
+    },
+    getRiskBySNPData: (state, action) => {
+      state.risksnploading = true
+      state.risksnperror = null
+      state.risksnp = null
+    },
+    getRiskBySNPDataSuccess: (state, action) => {
+      state.risksnploading = false
+      state.risksnperror = null
+      state.risksnp = action.payload.data
+    },
+    getRiskBySNPDataFailed: (state, action) => {
+      state.risksnploading = false
+      state.risksnperror = action.payload.error
+      state.risksnp = action.payload.data
     },
   },
 });
@@ -53,5 +71,8 @@ export const {
   getRiskAllDataSuccess,
   getSubHazardData,
   getSubHazardDataFailed,
-  getSubHazardDataSuccess
+  getSubHazardDataSuccess,
+  getRiskBySNPData,
+  getRiskBySNPDataFailed,
+  getRiskBySNPDataSuccess
 } = GenticsSlice.actions;

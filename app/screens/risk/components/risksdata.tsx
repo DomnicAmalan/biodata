@@ -7,6 +7,7 @@ import StackedBarChartComponent from "app/globalcomponents/barstackedchart";
 import { CollapseIcon, ExpandIcon } from "../../../../assets/svg/icons";
 import { FC, PropsWithChildren, useEffect, useRef, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack/lib/typescript/src/types";
 
 const intialHeight = 70
 const RiskData: FC<PropsWithChildren<IRiskData>> = (props) => {
@@ -32,7 +33,7 @@ const RiskData: FC<PropsWithChildren<IRiskData>> = (props) => {
     }
   }, [open]);
 
-  const navigation = useNavigation()
+  const navigation = useNavigation<NativeStackNavigationProp<any>>()
   return (
     <View style={{display: 'flex', flexDirection: 'row'}}>
       <Animated.View 

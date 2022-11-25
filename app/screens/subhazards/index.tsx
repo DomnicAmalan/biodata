@@ -33,7 +33,7 @@ const SubHazards: FC<PropsWithChildren & any> = (props) => {
       <View style={styles.riskscontainer}>
         <FlatList 
           data={subhazard?.risks}
-          renderItem={SubHazardRisksCard}
+          renderItem={(data) => <SubHazardRisksCard data={data} {...props}  />}
           extraData={subhazard?.risks}
           style={globalstyles.flatlistContainer}
           showsHorizontalScrollIndicator={false}

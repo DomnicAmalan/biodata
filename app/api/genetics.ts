@@ -19,7 +19,17 @@ const GetSubhazardApi = async(params: any) => {
   }
 }
 
+const GetRiskyBySNPApi = async(params: any) => {
+  try {
+    const data = await BackendInstance.get('/genetics/risks-by-snp', {params})
+    return data
+  } catch (e) {
+    return Promise.reject(e)
+  }
+}
+
 export {
   GetRiskAllApi,
-  GetSubhazardApi
+  GetSubhazardApi,
+  GetRiskyBySNPApi
 }

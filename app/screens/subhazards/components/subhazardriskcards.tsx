@@ -1,13 +1,22 @@
-import { RiskSub, SubHazardType } from "app/store/types"
-import { ListRenderItem, View } from "react-native"
-import { scale, windowWidth, moderateScale, windowHeight } from "app/lib/scale";
+import { RiskSub } from "app/store/types"
+import { ListRenderItem, View, TouchableOpacity, ListRenderItemInfo } from "react-native"
 import { StyleSheet, Text } from "react-native";
 import { riskindicators } from "app/constants/risk";
 import _ from 'lodash'
-const SubHazardRisksCard: ListRenderItem<RiskSub> = (info) => {
-  const {item} = info
+import { useNavigation } from "@react-navigation/native";
+import { FC, PropsWithChildren } from "react";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack/lib/typescript/src/types";
+const SubHazardRisksCard: FC<PropsWithChildren<SubHazardRisksCard>>  = (props) => {
+  const {item} = props?.data
+  const navigation = useNavigation<NativeStackNavigationProp<any>>()
+  
   return (
-    <View style={styles.container}>
+    <TouchableOpacity 
+      style={styles.container}
+      onPress={() => navigation.navigate(
+        'RiskbySNP', {subHazardId: item?.subHazardId, snpInterpretationId: item?.snpInterpretationId}
+      )}
+    >
       <View style={styles.itemcontainer}>
         <Text style={styles.headerlabel}>{item?.geneName}</Text>
       </View>
@@ -20,11 +29,13 @@ const SubHazardRisksCard: ListRenderItem<RiskSub> = (info) => {
       <View style={styles.itemcontainer}>
         <Text style={styles.headerlabel}>{item?.magnitude}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   )
 }
 
-
+interface SubHazardRisksCard {
+  data: ListRenderItemInfo<RiskSub>
+}
 
 const styles = StyleSheet.create({
   container: {
