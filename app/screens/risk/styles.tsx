@@ -4,6 +4,7 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
   flatlistContainer: {
     marginTop: scale(16),
-    marginBottom: scale(20)
+    paddingBottom: scale(100),
+    flexGrow: 1
   }
 })

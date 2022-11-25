@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     marginLeft: scale(16),
     marginRight: scale(16),
+    paddingBottom: scale(16)
   },
   risktypelabelscontainer: {
     display: 'flex',

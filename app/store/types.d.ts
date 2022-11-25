@@ -1,7 +1,10 @@
 interface GeneticsSliceTypes {
   riskallloading: boolean,
   riskallerror?: any,
-  riskalldata: riskDataType[]
+  riskalldata: riskDataType[],
+  subhazard?: RiskResponse | any,
+  subhazardloading: boolean,
+  subhazarderror?: any
 }
 
 interface riskDataType {
@@ -24,6 +27,36 @@ interface SubHazardType {
   wildType: number,
   subHazardId: number,
   subHazardName: string,
+}
+
+export interface RiskSub {
+  userId: number;
+  geneticTestId: number;
+  laboratoryName: string;
+  alleleTypeName: string;
+  alleleTypeId: number;
+  alleleInTest: string;
+  snpMarker: string;
+  geneName: string;
+  aminoAcid: string;
+  hazardName: string;
+  hazardId: number;
+  hazardDescription: string;
+  subHazardName: string;
+  subHazardId: number;
+  subHazardDescription: string;
+  magnitude: number;
+  snpInterpretationAlleleId: number;
+  snpInterpretationId: number;
+  narrative: string;
+  isConflict: boolean;
+}
+
+export interface RiskResponse {
+  risks: RiskSub[];
+  subHazardId: number;
+  subHazardName: string;
+  subHazardDescription: string;
 }
 
 export type PromiseFn = (...args: any) => Promise<any>;

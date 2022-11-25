@@ -12,6 +12,11 @@ const globalstyles = StyleSheet.create({
   },
   typography: {
     fontFamily: 'Inter'
+  },
+  flatlistContainer: {
+    marginTop: scale(16),
+    marginBottom: scale(100),
+    flexGrow: 1
   }
 })
 

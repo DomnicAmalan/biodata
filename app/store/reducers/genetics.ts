@@ -6,7 +6,10 @@ const GenticsSlice = createSlice({
   initialState: {
     riskallloading: false,
     riskallerror: null,
-    riskalldata: []
+    riskalldata: [],
+    subhazard: null,
+    subhazardloading: false,
+    subhazarderror: null
   } as GeneticsSliceTypes,
   reducers: {
     getRiskAllData: (state) => {
@@ -24,6 +27,21 @@ const GenticsSlice = createSlice({
       state.riskallerror = action.payload.error
       state.riskalldata = action.payload.data
     },
+    getSubHazardData: (state, action) => {
+      state.subhazardloading = true
+      state.subhazarderror = null
+      state.subhazard = []
+    },
+    getSubHazardDataSuccess: (state, action) => {
+      state.subhazardloading = false
+      state.subhazarderror = null
+      state.subhazard = action.payload.data
+    },
+    getSubHazardDataFailed: (state, action) => {
+      state.subhazardloading = false
+      state.subhazarderror = action.payload.error
+      state.subhazard = action.payload.data
+    },
   },
 });
 
@@ -32,5 +50,8 @@ export default GenticsSlice.reducer;
 export const {
   getRiskAllData,
   getRiskAllDataFailed,
-  getRiskAllDataSuccess
+  getRiskAllDataSuccess,
+  getSubHazardData,
+  getSubHazardDataFailed,
+  getSubHazardDataSuccess
 } = GenticsSlice.actions;

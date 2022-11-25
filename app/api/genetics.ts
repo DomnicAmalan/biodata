@@ -10,6 +10,16 @@ const GetRiskAllApi = async() => {
   }
 }
 
+const GetSubhazardApi = async(params: any) => {
+  try {
+    const data = await BackendInstance.get('/genetics/risks-by-subhazard', {params})
+    return data
+  } catch (e) {
+    return Promise.reject(e)
+  }
+}
+
 export {
-  GetRiskAllApi
+  GetRiskAllApi,
+  GetSubhazardApi
 }
