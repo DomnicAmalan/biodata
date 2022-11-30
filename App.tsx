@@ -16,12 +16,15 @@ import React from 'react';
 import {
   StatusBar,
   useColorScheme,
+  LogBox
 } from 'react-native';
 
 import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 import { Provider } from 'react-redux';
+
+LogBox.ignoreAllLogs()
 
 const AppWithProviders = () => (
   <Provider store={store}>

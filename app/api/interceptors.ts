@@ -2,7 +2,7 @@ import {AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse} from "axio
 
 const onRequest = (config: AxiosRequestConfig): AxiosRequestConfig => {
   config.headers = {
-    Authorization: 'Bearer 8RNCGatb8tMWwRmx51X7CZrz6wPG-W1-'
+    Authorization: 'Bearer DUMMY'
   }
   return config;
 }
