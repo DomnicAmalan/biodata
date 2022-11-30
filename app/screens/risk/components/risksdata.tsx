@@ -4,7 +4,7 @@ import { riskDataType } from "app/store/types";
 import { scale } from "app/lib/scale";
 import Typography from "app/globalcomponents/typography";
 import StackedBarChartComponent from "app/globalcomponents/barstackedchart";
-import { CollapseIcon, ExpandIcon } from "../../../../assets/svg/icons";
+import { CollapseIcon, ExpandIcon, FilterIcon } from "../../../../assets/svg/icons";
 import { FC, PropsWithChildren, useEffect, useRef, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack/lib/typescript/src/types";
@@ -71,7 +71,13 @@ const RiskData: FC<PropsWithChildren<IRiskData>> = (props) => {
                   barRadius={4}
                 />
                 <TouchableOpacity 
-                  onPress={() => navigation?.navigate('SubHazard', {subHazardId: subhazard.subHazardId})}
+                  onPress={() => 
+                    navigation?.navigate('SubHazard',
+                     {
+                      subHazardId: subhazard.subHazardId, 
+                      title: subhazard.subHazardName,
+                      RightHeaderCompFromProps: FilterIcon
+                    })}
                 >
                   <Text style={styles.morebutton}>More</Text>
                 </TouchableOpacity>

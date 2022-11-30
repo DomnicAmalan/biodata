@@ -14,7 +14,7 @@ const SubHazardRisksCard: FC<PropsWithChildren<SubHazardRisksCard>>  = (props) =
     <TouchableOpacity 
       style={styles.container}
       onPress={() => navigation.navigate(
-        'RiskbySNP', {subHazardId: item?.subHazardId, snpInterpretationId: item?.snpInterpretationId}
+        'RiskbySNP', {subHazardId: item?.subHazardId, snpInterpretationId: item?.snpInterpretationId, title: item?.snpMarker?.toLowerCase()}
       )}
     >
       <View style={styles.itemcontainer}>
